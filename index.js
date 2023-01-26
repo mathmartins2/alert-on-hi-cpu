@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import si from 'systeminformation';
 import axios from 'axios';
-const threshold = 80;
+const threshold = 90;
 
 export default async function checkCPU() {
     setInterval(async () => {
