@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import si from 'systeminformation';
 import axios from 'axios';
 const threshold = 80;
