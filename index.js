@@ -1,22 +1,14 @@
-import 'dotenv/config'
-import os from 'os'
+import si from 'systeminformation';
+const threshold = 90;
 
-const threshold = 90; 
-
-setInterval(async () => {
-  const usage = os.loadavg()[0];
-  console.log(`CPU usage is at ${usage}%, which is above the threshold of ${threshold}%.`);
-  const percentage = usage * 100;
-  if (percentage > threshold) {
-    await sendDiscordMessage(`CPU usage is at ${percentage}%, which is above the threshold of ${threshold}%.`);
-    console.log(`CPU usage is at ${percentage}%, which is above the threshold of ${threshold}%.`);
-  }
-}, 3000);
-
-
-const sendDiscordMessage = async (message) => {
-  await axios.post(process.env.DISCORD_URL, {
-    username: 'LULA CAMARADA',
-    content: message
-  })
+export default async function checkCPU() {
+    setInterval(async () => {
+        let { currentLoadSystem } = await si.currentLoad()
+        currentLoadSystem = Math.round(currentLoadSystem * 100);
+        console.log(`CPU usage is at ${currentLoadSystem}%, which is below the threshold of ${threshold}%.`);
+        if (currentLoadSystem >= threshold && currentLoadSystem < 100) {
+            console.log(`CPU usage is at ${currentLoadSystem}%, which is above the threshold of ${threshold}%.`);
+        }
+    }, 3000);
 }
+checkCPU()
