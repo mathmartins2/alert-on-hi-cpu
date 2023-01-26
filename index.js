@@ -5,8 +5,8 @@ const threshold = 90;
 
 setInterval(async () => {
   const usage = os.loadavg()[0];
+  console.log(`CPU usage is at ${usage}%, which is above the threshold of ${threshold}%.`);
   const percentage = usage * 100;
-  console.log(`CPU usage is at ${percentage}%, which is above the threshold of ${threshold}%.`);
   if (percentage > threshold) {
     await sendDiscordMessage(`CPU usage is at ${percentage}%, which is above the threshold of ${threshold}%.`);
     console.log(`CPU usage is at ${percentage}%, which is above the threshold of ${threshold}%.`);
