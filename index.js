@@ -9,7 +9,7 @@ export default async function checkCPU() {
         currentLoadSystem = Math.round(currentLoadSystem)
         console.log(`CPU usage is at ${currentLoadSystem}%, which is below the threshold of ${threshold}%.`);
         if (currentLoadSystem >= threshold) {
-            sendDiscordMessage(`CPU usage is at ${currentLoadSystem}%, which is above the threshold of ${threshold}%.`)
+            sendDiscordMessage(`CPU usage is at ${currentLoadSystem}%, which is above the threshold of ${threshold}%. CORRE Q O SGEDU TA PEGANDO FOGO`)
         }
     }, 3000);
 }
