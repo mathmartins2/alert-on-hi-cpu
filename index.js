@@ -7,7 +7,7 @@ export default async function checkCPU() {
         let { currentLoad: currentLoadSystem } = await si.currentLoad()
         currentLoadSystem = Math.round(currentLoadSystem)
         console.log(`CPU usage is at ${currentLoadSystem}%, which is below the threshold of ${threshold}%.`);
-        if (currentLoadSystem >= threshold && currentLoadSystem < 100) {
+        if (currentLoadSystem >= threshold) {
             sendDiscordMessage(`CPU usage is at ${currentLoadSystem}%, which is above the threshold of ${threshold}%.`)
         }
     }, 3000);
